@@ -1,6 +1,18 @@
-version: '3.8'
-
 services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./requirements/nginx
+    ports:
+      - '443:443'
+    restart: on-failure
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress-volume:/var/www/html
+    networks:
+      - inception-net
+
   wordpress:
     container_name: wordpress
     build:
@@ -31,6 +43,10 @@ services:
     ports:
       - "3306:3306"
 
+networks:
+  inception-net:
+    driver: bridge
+
 volumes:
   wordpress-volume:
     driver: local
@@ -44,7 +60,3 @@ volumes:
       o: bind
       type: none
       device: /Users/jsanger/InceptionVolumes/data/mariadb
-
-networks:
-  inception-net:
-    driver: bridge
