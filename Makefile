@@ -2,7 +2,7 @@
 SERVICES = nginx wordpress mariadb
 
 # Docker Compose commands
-COMPOSE = docker-compose -f ./srcs/docker-compose.yml
+COMPOSE = docker compose -f ./srcs/docker-compose.yml
 
 .PHONY: all build up down start stop restart logs clean remove
 

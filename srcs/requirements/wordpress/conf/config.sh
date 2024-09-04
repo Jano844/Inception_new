@@ -1,6 +1,6 @@
 #!/bin/sh
-if [ ! -f "/var/www/wp-config.php" ]; then
-cat << 'EOF' > /var/www/wp-config.php
+if [ ! -f "/var/www/html/wp-config.php" ]; then
+cat << 'EOF' > /var/www/html/wp-config.php
 <?php
 /**
  * The base configuration for WordPress
@@ -8,9 +8,7 @@ cat << 'EOF' > /var/www/wp-config.php
  * The wp-config.php creation script uses this file during the installation.
  * You don't have to use the website, you can copy this file to "wp-config.php"
  * and fill in the values.
- *
  * This file contains the following configurations:
- *
  * * Database settings
  * * Secret keys
  * * Database table prefix
@@ -22,22 +20,11 @@ cat << 'EOF' > /var/www/wp-config.php
  */
 
 // ** Database settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
 define( 'DB_NAME', '${DB_NAME}' );
-
-/** Database username */
 define( 'DB_USER', '${DB_USER}' );
-
-/** Database password */
 define( 'DB_PASSWORD', '${DB_PASS}' );
-
-/** Database hostname */
 define( 'DB_HOST', 'mariadb' );
-
-/** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
-
-/** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
 /**#@+
@@ -61,13 +48,6 @@ define('LOGGED_IN_SALT',   'W;#@w:|n[B4G?w.9o<wHpq-wAi1-& YrmB[oF(J)&+)X8]O^_z=,
 define('NONCE_SALT',       'a1FE8RZ#*}z&0D./kj34*G6x?10^:68 tcmx8/aHo``M)]P_h/=]Z9V>$Z(i}+>C');
 /**#@-*/
 
-/**
- * WordPress database table prefix.
- *
- * You can have multiple installations in one database if you give each
- * a unique prefix. Only numbers, letters, and underscores please!
- */
-
 $table_prefix = 'wp_';
 
 /**
@@ -85,7 +65,6 @@ $table_prefix = 'wp_';
 define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
-
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
