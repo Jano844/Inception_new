@@ -53,10 +53,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /Users/jsanger/InceptionVolumes/data/wordpress
+      device: $HOME/InceptionVolumes/data/wordpress
   mariadb-volume:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /Users/jsanger/InceptionVolumes/data/mariadb
+      device: $HOME/jsanger/InceptionVolumes/data/mariadb
