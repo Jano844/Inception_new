@@ -59,4 +59,4 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: $HOME/jsanger/InceptionVolumes/data/mariadb
+      device: $HOME/InceptionVolumes/data/mariadb
