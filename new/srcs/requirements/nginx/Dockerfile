@@ -12,8 +12,8 @@ COPY ./conf/ssl/jsanger.42.fr.key /etc/nginx/ssl/jsanger.42.fr.key
 EXPOSE 443
 
 # copy and start the nginx script 
-COPY ./tools/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-CMD ["/entrypoint.sh"]
+COPY ./tools/script.sh /script.sh
+RUN chmod +x /script.sh
+CMD ["/script.sh"]
 
 
