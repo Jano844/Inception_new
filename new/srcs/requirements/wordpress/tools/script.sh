@@ -13,10 +13,10 @@ cd /var/www/html
 rm -rf *
 
 # Lade das WP-CLI-Tool herunter
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 # Mache das WP-CLI-Tool ausführbar
-chmod +x wp-cli.phar 
+chmod +x wp-cli.phar
 
 # Verschiebe WP-CLI an den Ort, an dem es ausgeführt werden kann
 mv wp-cli.phar /usr/local/bin/wp
@@ -25,7 +25,7 @@ mv wp-cli.phar /usr/local/bin/wp
 wp core download --allow-root
 
 # Kopiere die benutzerdefinierte Konfigurationsdatei
-cp ./conf/wp-config.php /var/www/html/wp-config.php
+cp /wp-config.php /var/www/html/wp-config.php
 
 # Ersetze Platzhalter in der Konfigurationsdatei durch Umgebungsvariablen
 sed -i -r "s/db/$m_db_name/1"   /var/www/html/wp-config.php
