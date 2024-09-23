@@ -1,4 +1,7 @@
 <?php
+
+// https://developer.wordpress.org/advanced-administration/wordpress/wp-config/
+
 // ** Datenbankeinstellungen - Diese Informationen bekommst du von deinem Hostinganbieter ** //
 define('DB_NAME', 'db1'); // Hier wird der Name der Datenbank eingefügt
 define('DB_USER', 'user'); // Hier wird der Datenbankbenutzer eingefügt
