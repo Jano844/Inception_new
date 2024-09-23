@@ -28,9 +28,11 @@ wp core download --allow-root
 cp /wp-config.php /var/www/html/wp-config.php
 
 # Ersetze Platzhalter in der Konfigurationsdatei durch Umgebungsvariablen
-sed -i -r "s/db/$m_db_name/1"   /var/www/html/wp-config.php
+sed -i -r "s/db1/$m_db_name/1"   /var/www/html/wp-config.php
 sed -i -r "s/user/$m_db_user/1"  /var/www/html/wp-config.php
 sed -i -r "s/pwd/$m_db_pwd/1"    /var/www/html/wp-config.php
+
+cat /var/www/html/wp-config.php
 
 # Installiere und konfiguriere WordPress
 wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USER --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root

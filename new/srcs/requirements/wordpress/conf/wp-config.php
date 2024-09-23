@@ -1,6 +1,6 @@
 <?php
 // ** Datenbankeinstellungen - Diese Informationen bekommst du von deinem Hostinganbieter ** //
-define('DB_NAME', 'db'); // Hier wird der Name der Datenbank eingefügt
+define('DB_NAME', 'db1'); // Hier wird der Name der Datenbank eingefügt
 define('DB_USER', 'user'); // Hier wird der Datenbankbenutzer eingefügt
 define('DB_PASSWORD', 'pwd'); // Hier wird das Datenbankpasswort eingefügt
 define('DB_HOST', 'mariadb'); // Der Hostname, normalerweise 'localhost' oder der Name des MariaDB-Containers
