@@ -33,10 +33,14 @@ wp theme install astra --allow-root
 # wp plugin install redis-cache --allow-root
 
 # Konfiguriere PHP-FPM für die Port-Bindung
-sed -i 's|listen = /run/php/php-fpm.sock|listen = 9000|g' /etc/php/7.4/fpm/pool.d/www.conf
+
+sed -i 's|listen = /run/php/php7.4-fpm.sock|listen = 9000|g' /etc/php/7.4/fpm/pool.d/www.conf
 mkdir -p /run/php
 
 # wp user list --allow-root
 # to check all users in database
+
+echo "HelloWorld"
+cat /etc/php/7.4/fpm/pool.d/www.conf | grep "listen ="
 
 exec php-fpm7.4 -F
