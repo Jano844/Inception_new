@@ -1,36 +1,24 @@
-# FROM alpine:3.18
 
-# # install MariaDB and needed Tools
-# RUN apk update && \
-#     apk add --no-cache mariadb mariadb-client bash
-
-# # copy config file and script
-# COPY ./conf/my.cnf /etc/mysql/my.cnf
-# COPY ./tools/script.sh /
-
-# # Setze MariaDB Verzeichnisse und Berechtigungen
-# RUN mkdir -p /run/mysqld && \
-#     chown -R mysql:mysql /run/mysqld && \
-#     chown -R mysql:mysql /var/lib/mysql
-
-# RUN chmod +x /script.sh
-
-# # start script
-# CMD ["/script.sh"]
+# Test container
+#docker build -t "Image_name" .
+#docker run -it "Image_name"
 
 
 
+FROM debian:bullseye
 
-FROM alpine:3.18
+RUN mkdir -p /run/mysqld && chmod 777 /run/mysqld \
+	&& mkdir -p /var/lib/mysql && chmod 777 /var/lib/mysql
 
-RUN apk update && apk add --no-cache mariadb mariadb-client mariadb-server-utils
+RUN apt-get update && apt-get upgrade -y \
+	&& apt-get install mariadb-server -y
 
+RUN chown mysql:mysql /var/lib/mysql
 
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
-
-COPY ./conf/my.cnf /etc/mysql/mariadb.conf.d/
-COPY ./tools/script.sh /
-
+COPY ../conf/my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ../tools/script.sh /
 RUN chmod +x /script.sh
+
+EXPOSE 3306
 
 CMD ["/script.sh"]
