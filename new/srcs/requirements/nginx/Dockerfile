@@ -1,7 +1,16 @@
 # Use the Alpine Linux base image version 3.18
-FROM alpine:3.18
+# FROM alpine:3.18
 
-RUN apk update && apk upgrade && apk add --no-cache nginx openssl
+# RUN apk update && apk upgrade && apk add --no-cache nginx openssl
+
+#changed to debian:
+
+FROM debian:bullseye
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y nginx openssl
+
+#same as using alpine
+
 
 # Copy the Nginx configuration file from the host to the container
 COPY ./conf/default.conf /etc/nginx/nginx.conf

@@ -6,4 +6,4 @@
 # i just createt them only once and have them in the conf/ssl directory
 
 # start the main procces
-nginx -g 'daemon off;' 
+exec nginx -g 'daemon off;' 
