@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # Erstelle Verzeichnisse für die WordPress-Dateien, geh da hin loesche alles was noch drinne war
+
+sleep 8
+
 mkdir -p /var/www/html
 cd /var/www/html
 rm -rf *
