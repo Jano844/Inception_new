@@ -12,6 +12,8 @@ services:
       - wordpress-volume:/var/www/html
     networks:
       - inception-net
+    env_file:
+      - .env
 
   wordpress:
     container_name: wordpress
@@ -20,14 +22,14 @@ services:
     ports:
       - "9000:9000"
     env_file:
-      - ./.env
+      - .env
     depends_on:
       - mariadb
-    restart: on-failure
     volumes:
       - wordpress-volume:/var/www/html
     networks:
       - inception-net
+    restart: on-failure
 
   mariadb:
     container_name: mariadb
@@ -43,9 +45,7 @@ services:
     ports:
       - "3306:3306"
 
-networks:
-  inception-net:
-    driver: bridge
+
 
 volumes:
   wordpress-volume:
@@ -53,10 +53,18 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: $HOME/InceptionVolumes/data/wordpress
+      device: $HOME/data/wordpress
   mariadb-volume:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: $HOME/InceptionVolumes/data/mariadb
+      device: $HOME/data/mariadb
+
+
+networks:
+  inception-net:
+    driver: bridge
+    name: inception
+
+

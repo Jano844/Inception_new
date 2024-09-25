@@ -1,15 +1,15 @@
 
-SERVICES = nginx wordpress mariadb
 
-# Docker Compose commands
 COMPOSE = docker compose -f ./srcs/docker-compose.yml
 
-.PHONY: all build up down start stop restart logs clean remove
+.PHONY: all build up down start stop restart logs clean remove delete
 
 all: build up
 
 # Build containers
 build:
+	if [ ! -d $(HOME)/data/wordpress ]; then mkdir -p $(HOME)/data/wordpress; fi
+	if [ ! -d $(HOME)/data/mariadb ]; then mkdir -p $(HOME)/data/mariadb; fi
 	$(COMPOSE) build
 
 # Start containers
@@ -46,12 +46,3 @@ remove:
 	@if [ -n "$$(docker images -qa)" ]; then docker rmi -f $$(docker images -qa); fi
 	@if [ -n "$$(docker volume ls -q)" ]; then docker volume rm $$(docker volume ls -q); fi
 	@if [ -n "$$(docker network ls -q)" ]; then docker network rm $$(docker network ls -q) 2>/dev/null || true; fi
-
-
-delete:
-	cd && cd InceptionVolumes/data/wordpress && rm -rf * && cd .. && cd mariadb && rm -rf * && cd  && cd Desktop/Inception_new
-
-.PHONY: $(SERVICES)
-
-$(SERVICES):
-	$(COMPOSE) up -d $@

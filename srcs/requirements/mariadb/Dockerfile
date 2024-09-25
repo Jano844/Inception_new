@@ -1,32 +1,24 @@
-FROM alpine:3.18
 
-# Define arguments
-ARG DB_PASS
-ARG DB_USER
-ARG DB_NAME
-ARG DB_ROOT
+# Test container
+#docker build -t "Image_name" .
+#docker run -it "Image_name"
 
-RUN apk update && apk add --no-cache mariadb mariadb-client
 
-RUN mkdir /var/run/mysqld; \
-    chmod -R 0777 /var/run/mysqld; \
-    { echo '[mysqld]'; \
-      echo 'skip-host-cache'; \
-      echo 'skip-name-resolve'; \
-      echo 'bind-address=0.0.0.0'; \
-    } | tee /etc/my.cnf.d/docker.cnf; \
-    sed -i "s|skip-networking|skip-networking=0|g" \
-      /etc/my.cnf.d/mariadb-server.cnf
 
-# init the MariaDB
-RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
+FROM debian:bullseye
 
-# Open port to allow connections to MariaDB
+RUN mkdir -p /run/mysqld && chmod 777 /run/mysqld \
+	&& mkdir -p /var/lib/mysql && chmod 777 /var/lib/mysql
+
+RUN apt-get update && apt-get upgrade -y \
+	&& apt-get install mariadb-server -y
+
+RUN chown mysql:mysql /var/lib/mysql
+
+COPY ../conf/my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ../tools/script.sh /
+RUN chmod +x /script.sh
+
 EXPOSE 3306
-USER mysql
 
-# Copy and Run the script
-COPY ./tools/entrypoint.sh .
-RUN sh entrypoint.sh
-CMD ["/usr/bin/mysqld"]
-
+CMD ["/script.sh"]
