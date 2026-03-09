@@ -45,7 +45,16 @@ services:
     ports:
       - "3306:3306"
 
-
+  adminer:
+    container_name: adminer
+    image: adminer
+    depends_on:
+      - mariadb
+    restart: on-failure
+    ports:
+      - "4242:8080"
+    networks:
+      - inception-net
 
 volumes:
   wordpress-volume:
