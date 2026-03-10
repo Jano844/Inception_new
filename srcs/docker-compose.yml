@@ -5,6 +5,7 @@ services:
       context: ./requirements/nginx
     ports:
       - '443:443'
+      - '8080:8080'
     restart: on-failure
     depends_on:
       - wordpress
@@ -47,12 +48,11 @@ services:
 
   adminer:
     container_name: adminer
-    image: adminer
+    build:
+      context: ./requirements/adminer
     depends_on:
       - mariadb
     restart: on-failure
-    ports:
-      - "4242:8080"
     networks:
       - inception-net
 
