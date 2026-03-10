@@ -46,4 +46,8 @@ mkdir -p /run/php
 echo "HelloWorld"
 cat /etc/php/7.4/fpm/pool.d/www.conf | grep "listen ="
 
+wp plugin install redis-cache --activate --allow-root
+wp redis enable --allow-root
+
+
 exec php-fpm7.4 -F

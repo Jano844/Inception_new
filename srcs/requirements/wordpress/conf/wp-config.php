@@ -8,6 +8,11 @@ define('DB_USER', 'user1'); // Hier wird der Datenbankbenutzer eingefügt
 define('DB_PASSWORD', 'pwd1'); // Hier wird das Datenbankpasswort eingefügt
 define('DB_HOST', 'mariadb'); // Der Hostname, normalerweise 'localhost' oder der Name des MariaDB-Containers
 
+
+define('WP_REDIS_HOST', 'redis');
+define('WP_REDIS_PORT', 6379);
+define('WP_CACHE', true);
+
 // ** Datenbankzeichensatz für die Datenbanktabelle ** //
 define('DB_CHARSET', 'utf8mb4');
 

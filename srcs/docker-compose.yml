@@ -27,6 +27,7 @@ services:
       - .env
     depends_on:
       - mariadb
+      - redis
     volumes:
       - wordpress-volume:/var/www/html
     networks:
@@ -76,6 +77,14 @@ services:
     container_name: website
     build:
       context: ./requirements/website
+    networks:
+      - inception-net
+    restart: on-failure
+
+  redis:
+    container_name: redis
+    build:
+      context: ./requirements/redis
     networks:
       - inception-net
     restart: on-failure
