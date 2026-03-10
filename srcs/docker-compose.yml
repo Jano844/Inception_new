@@ -55,6 +55,28 @@ services:
     restart: on-failure
     networks:
       - inception-net
+  
+  ftp:
+    container_name: ftp
+    build:
+      context: ./requirements/ftp
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    env_file:
+      - .env
+    volumes:
+      - wordpress-volume:/var/www/html
+    networks:
+      - inception-net
+    restart: on-failure
+
+
+
+
+
+
+
 
 volumes:
   wordpress-volume:
@@ -69,6 +91,12 @@ volumes:
       o: bind
       type: none
       device: $HOME/data/mariadb
+
+    
+
+
+
+
 
 
 networks:
