@@ -6,6 +6,7 @@ services:
     ports:
       - '443:443'
       - '8080:8080'
+      - '4242:4242'
     restart: on-failure
     depends_on:
       - wordpress
@@ -67,6 +68,14 @@ services:
       - .env
     volumes:
       - wordpress-volume:/var/www/html
+    networks:
+      - inception-net
+    restart: on-failure
+
+  website:
+    container_name: website
+    build:
+      context: ./requirements/website
     networks:
       - inception-net
     restart: on-failure
