@@ -1,0 +1,7 @@
+test
+
+upload the test file
+curl -T test.txt ftp://localhost --user ftp_user:password --ftp-pasv
+
+ls
+curl ftp://localhost --user ftp_user:password --ftp-pasv
