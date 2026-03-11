@@ -89,6 +89,16 @@ services:
       - inception-net
     restart: on-failure
 
+  backend:
+    container_name: backend
+    build:
+      context: ./requirements/backend
+    ports:
+      - "5000:5000"
+    networks:
+      - inception-net
+    restart: on-failure
+
 
 
 
