@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guestbook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
+
+  <div id="status-bar">
+    <span id="api-status">checking api</span>
+    <span id="api-url"></span>
+  </div>
+
+  <main>
+    <h1>Guest<span>book</span></h1>
+    <p class="subtitle">Leave a message.</p>
+
+    <form id="guestbook-form">
+      <input type="text" id="input-name" placeholder="Your name" maxlength="50" required/>
+      <textarea id="input-message" placeholder="Your message" maxlength="300" required></textarea>
+      <button type="submit">Post Entry</button>
+      <span id="form-error"></span>
+    </form>
+
+    <div id="entries-list">
+      <p class="loading">Loading entries...</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
