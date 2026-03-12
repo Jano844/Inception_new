@@ -8,8 +8,6 @@ all: build up
 
 # Build containers
 build:
-	if [ ! -d $(HOME)/data/wordpress ]; then mkdir -p $(HOME)/data/wordpress; fi
-	if [ ! -d $(HOME)/data/mariadb ]; then mkdir -p $(HOME)/data/mariadb; fi
 	$(COMPOSE) build
 
 # Start containers

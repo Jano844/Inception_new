@@ -17,13 +17,13 @@ async function ping() {
   try {
     const res = await fetch(`${API_BASE}/ping`);
     if (res.ok) {
-      statusEl.textContent = '⬤ api online';
+      statusEl.textContent = 'api online';
       statusEl.className = 'online';
     } else {
       throw new Error();
     }
   } catch {
-    statusEl.textContent = '⬤ api offline';
+    statusEl.textContent = 'api offline';
     statusEl.className = 'offline';
   }
 }
@@ -91,6 +91,7 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+// check for Cross-Site Scripting (somewone writes <script>alert('xss')</script> in the guestbook)
 function escapeHtml(str) {
   return str
     .replace(/&/g, '&amp;')
